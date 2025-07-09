@@ -23,33 +23,18 @@
     </div>
   </section>
 </template>
+<script setup>
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
 
-<script>
-export default {
-  name: "Pengalaman",
-  data() {
-    return {
-      pengalaman: [
-        {
-          judul: "Frontend Developer di PT. Maju Mundur",
-          tanggal: "Jan 2022 - Sekarang",
-          deskripsi:
-            "Mengembangkan dan memelihara aplikasi web menggunakan Vue.js dan teknologi frontend lainnya.",
-        },
-        {
-          judul: "UI/UX Designer di Kreatif Studio",
-          tanggal: "Jul 2020 - Des 2021",
-          deskripsi:
-            "Merancang tampilan antarmuka pengguna dan pengalaman pengguna untuk berbagai aplikasi mobile dan web.",
-        },
-        {
-          judul: "Intern Web Developer di Startup XYZ",
-          tanggal: "Jan 2020 - Jun 2020",
-          deskripsi:
-            "Membantu tim dalam membangun fitur-fitur baru dan memperbaiki bug pada website perusahaan.",
-        },
-      ],
-    };
-  },
-};
+const pengalaman = ref([])
+
+onMounted(async () => {
+  try {
+    const res = await axios.get('http://localhost:3000/api/pengalaman')
+    pengalaman.value = res.data
+  } catch (err) {
+    console.error('Gagal ambil data pengalaman:', err)
+  }
+})
 </script>
