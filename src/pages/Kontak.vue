@@ -14,7 +14,7 @@
           class="flex items-center gap-3 bg-blue-50 hover:bg-blue-100 transition rounded-lg px-4 py-3 shadow"
         >
           <span class="text-blue-600 text-xl">
-            <i class="fas fa-envelope"></i>
+            <i class='bx bx-envelope'></i>
           </span>
           <span class="text-gray-800 font-medium">rizqizulmiaztaalbar1@gmail.com</span>
         </a>
@@ -24,7 +24,7 @@
           class="flex items-center gap-3 bg-gray-50 hover:bg-gray-100 transition rounded-lg px-4 py-3 shadow"
         >
           <span class="text-gray-800 text-xl">
-            <i class="fab fa-github"></i>
+            <i class='bx bxl-github'></i>
           </span>
           <span class="text-gray-800 font-medium">github.com/albarstring</span>
         </a>
@@ -34,7 +34,7 @@
           class="flex items-center gap-3 bg-blue-50 hover:bg-blue-100 transition rounded-lg px-4 py-3 shadow"
         >
           <span class="text-blue-700 text-xl">
-            <i class="fab fa-linkedin"></i>
+            <i class='bx bxl-linkedin-square'></i>
           </span>
           <span class="text-gray-800 font-medium">linkedin.com/in/rz-albar</span>
         </a>
@@ -45,14 +45,14 @@
           target="_blank"
           class="text-gray-500 hover:text-gray-900 text-2xl transition"
         >
-          <i class="fab fa-github"></i>
+          <i class='bx bxl-github'></i>
         </a>
         <a
           href="https://linkedin.com/in/rz-albar"
           target="_blank"
           class="text-blue-700 hover:text-blue-900 text-2xl transition"
         >
-          <i class="fab fa-linkedin"></i>
+          <i class='bx bxl-linkedin-square'></i>
         </a>
         <a
           href="mailto:rizqizulmiaztaalbar1@gmail.com"

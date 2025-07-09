@@ -13,19 +13,19 @@
           :key="index"
           class="bg-gray-50 rounded-xl shadow-md flex flex-col overflow-hidden transition-transform duration-150 hover:-translate-y-1.5 hover:scale-[1.02] hover:shadow-lg"
         >
-          <div v-if="proyek.gambar" class="w-full h-40 bg-gray-200">
+          <div v-if="proyek.image" class="w-full h-40 bg-gray-200">
             <img
-              :src="proyek.gambar"
-              :alt="proyek.nama"
+              :src="proyek.image"
+              :alt="proyek.title"
               class="w-full h-full object-cover"
             />
           </div>
           <div class="flex flex-col flex-1 px-4 py-4">
             <h3 class="text-lg font-semibold text-slate-800 mb-2">
-              {{ proyek.nama }}
+              {{ proyek.title }}
             </h3>
             <p class="text-gray-600 text-sm mb-4 flex-1">
-              {{ proyek.deskripsi }}
+              {{ proyek.description }}
             </p>
             <div v-if="proyek.link" class="mt-auto">
               <a
@@ -44,38 +44,19 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: "Proyek",
-  data() {
-    return {
-      proyekList: [
-        {
-          nama: "Aplikasi Manajemen Tugas",
-          deskripsi:
-            "Aplikasi web untuk mengelola tugas harian dengan fitur to-do list, reminder, dan progress tracking. Dibangun menggunakan Vue.js dan Firebase.",
-          gambar:
-            "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80",
-          link: "https://github.com/albarstring/todo-app",
-        },
-        {
-          nama: "Website Portfolio Pribadi",
-          deskripsi:
-            "Website portfolio responsif untuk menampilkan profil, pengalaman, dan proyek-proyek yang pernah dikerjakan. Menggunakan Tailwind CSS dan Vue.js.",
-          gambar:
-            "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
-          link: "https://albarstring.github.io/portfolio",
-        },
-        {
-          nama: "Sistem Informasi Perpustakaan",
-          deskripsi:
-            "Aplikasi berbasis web untuk manajemen data buku, peminjaman, dan pengembalian di perpustakaan sekolah. Backend menggunakan Laravel, frontend dengan Vue.js.",
-          gambar:
-            "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
-          link: "",
-        },
-      ],
-    };
-  },
-};
+<script setup>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+const proyekList = ref([]);
+
+onMounted(async () => {
+  try {
+    const res = await axios.get('http://localhost:3000/api/proyek');
+    proyekList.value = res.data;
+  } catch (err) {
+    console.error('Gagal ambil data proyek:', err);
+  }
+});
 </script>
+

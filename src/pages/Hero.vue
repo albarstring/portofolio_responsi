@@ -21,18 +21,18 @@
       </span>
     </p>
     <div class="flex space-x-4 mt-4">
-      <a
-        href="#kontak"
+      <router-link
+        to="/kontak"
         class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full shadow transition duration-200"
       >
         Kontak Saya
-      </a>
-      <a
-        href="#proyek"
+      </router-link>
+      <router-link
+        to="/proyek"
         class="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-6 py-2 rounded-full shadow transition duration-200"
       >
         Lihat Proyek
-      </a>
+      </router-link>
     </div>
     <!-- Social Media Icons -->
     <div class="flex space-x-5 mt-8">

@@ -68,6 +68,18 @@
   </section>
 </template>
 
-<style scoped>
-/* Custom style for skill icons and cards */
-</style>
+<script setup>
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+
+const skills = ref([])
+
+onMounted(async () => {
+  try {
+    const res = await axios.get('http://localhost:3000/api/skills')
+    skills.value = res.data
+  } catch (err) {
+    console.error('Gagal ambil data skill:', err)
+  }
+})
+</script>
