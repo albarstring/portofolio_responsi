@@ -76,7 +76,7 @@ const skills = ref([])
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:3000/api/skills')
+    const res = await axios.get('https://portofoliobe-albar.up.railway.app/api/skills');
     skills.value = res.data
   } catch (err) {
     console.error('Gagal ambil data skill:', err)

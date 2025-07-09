@@ -31,7 +31,7 @@ const pengalaman = ref([])
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:3000/api/pengalaman')
+    const res = await axios.get('https://portofoliobe-albar.up.railway.app/api/pengalaman');
     pengalaman.value = res.data
   } catch (err) {
     console.error('Gagal ambil data pengalaman:', err)
