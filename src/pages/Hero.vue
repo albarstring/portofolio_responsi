@@ -18,7 +18,7 @@
     ></div>
     <!-- Profile Image -->
     <img
-      src="https://ui-avatars.com/api/?name=Nama+Kamu&background=4f46e5&color=fff&size=128"
+      src="../assets/Albar2.jpg"
       alt="Foto Profil"
       class="w-32 h-32 rounded-full shadow-lg border-4 border-white mb-6 object-cover"
       data-aos="zoom-in"
