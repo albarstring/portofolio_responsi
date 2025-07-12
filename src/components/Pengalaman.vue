@@ -3,7 +3,7 @@
   <section
     id="pengalaman"
     class="py-36 px-6 relative"
-    style="margin-top: -8rem; z-index: 1;"
+    style="margin-top: -4rem; z-index: 1;"
   >
     <div class="container mx-auto max-w-6xl">
       <h2 class="text-4xl md:text-6xl font-bold text-center mb-16 animate-fade-in-up"

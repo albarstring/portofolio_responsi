@@ -1,7 +1,7 @@
 <template>
   <!-- Education Section tanpa background, biarkan background dari App.vue -->
   <section id="pendidikan" class="py-32 md:py-48 px-6 relative min-h-[100vh] overflow-visible"
-    style="margin-top: -8rem; z-index: 1;">
+    style="margin-top: -4rem; z-index: 1;">
     <div class="container mx-auto max-w-6xl relative z-10">
       <h2 class="text-4xl md:text-6xl font-bold text-center mb-16 animate-fade-in-up" ref="educationSection">
         <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
