@@ -1,6 +1,6 @@
 <template>
   <!-- Profile Section -->
-  <section id="profile" class="min-h-screen flex items-center justify-center px-6 relative">
+  <section id="profile" class="min-h-screen flex items-center justify-center px-6 relative" style="margin-top: 6rem;">
     <div class="text-center max-w-4xl mx-auto">
       <!-- Profile Image -->
       <div class="relative mb-8 animate-fade-in-up">
