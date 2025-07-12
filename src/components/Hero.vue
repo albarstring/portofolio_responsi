@@ -38,9 +38,9 @@
 
       <!-- CTA Buttons -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style="animation-delay: 0.6s">
-        <button @click="scrollToSection('kontak')"
+        <button @click="scrollToSection('proyek')"
           class="group relative px-8 py-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">
-          <span class="relative z-10">Lihat Kontak</span>
+          <span class="relative z-10">Lihat Proyek</span>
           <div
             class="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           </div>
