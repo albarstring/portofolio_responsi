@@ -35,11 +35,11 @@
     <!-- Lebar marquee disamakan dengan container utama -->
     <div class="w-full max-w-6xl mx-auto mt-16 overflow-hidden select-none relative">
       <div
-        class="flex gap-8 py-2 px- animate-scroll-left pointer-events-auto"
-        style="width: 200%;"
+        ref="marquee"
+        class="flex gap-8 py-2 px- pointer-events-auto"
+        style="will-change: transform;"
         @mouseenter="isMarqueePaused = true"
         @mouseleave="isMarqueePaused = false"
-        :class="{ 'paused': isMarqueePaused }"
       >
         <!-- Render icon boxicon -->
         <template v-for="icon in boxicons" :key="icon.name">
@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, onBeforeUnmount } from 'vue'
 import axios from 'axios'
 
 // Daftar boxicon yang ingin ditampilkan di marquee
@@ -94,6 +94,25 @@ const groupedSkills = computed(() => {
 
 // Untuk pause marquee saat hover
 const isMarqueePaused = ref(false)
+const marquee = ref(null)
+
+let marqueeFrame
+let offset = 0
+const speed = 1 // px per frame, adjust for desired speed
+
+function animateMarquee() {
+  if (!marquee.value) return
+  if (!isMarqueePaused.value) {
+    offset -= speed
+    // Get the width of half the marquee (one set of icons)
+    const marqueeWidth = marquee.value.scrollWidth / 2
+    if (Math.abs(offset) >= marqueeWidth) {
+      offset = 0
+    }
+    marquee.value.style.transform = `translateX(${offset}px)`
+  }
+  marqueeFrame = requestAnimationFrame(animateMarquee)
+}
 
 onMounted(async () => {
   try {
@@ -129,26 +148,15 @@ onMounted(async () => {
   } catch (err) {
     console.error('Gagal ambil data skill:', err)
   }
+  // Start marquee animation
+  marqueeFrame = requestAnimationFrame(animateMarquee)
+})
+
+onBeforeUnmount(() => {
+  if (marqueeFrame) cancelAnimationFrame(marqueeFrame)
 })
 </script>
 
 <style scoped>
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-scroll-left {
-  animation: scroll-left 10s linear infinite;
-  width: 200%;
-}
-
-.animate-scroll-left.paused {
-  animation-play-state: paused;
-}
+/* Hapus animasi keyframes scroll-left, karena sekarang pakai JS manual */
 </style>
