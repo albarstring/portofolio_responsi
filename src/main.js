@@ -1,5 +1,5 @@
+// main.js
 import { createApp } from 'vue'
-import App from './App.vue'
-import router from './Router' // ← ini wajib ada
-
-createApp(App).use(router).mount('#app') // ← router dipasang ke app
+import App from './App.vue' 
+createApp(App).mount('#app')
+import '@fortawesome/fontawesome-free/css/all.min.css'
