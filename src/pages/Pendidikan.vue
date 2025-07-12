@@ -48,7 +48,7 @@ const pendidikan = ref([]);
 
 onMounted(async () => {
   try {
-    const res = await axios.get('https://portofoliobe-albar.up.railway.app/api/pendidikan');
+    const res = await axios.get('https://portofoliob-responsi.vercel.app/api/pendidikan');
     pendidikan.value = res.data;
   } catch (err) {
     console.error('Gagal ambil data pendidikan:', err);

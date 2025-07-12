@@ -88,7 +88,7 @@ const proyekList = ref([]);
 
 onMounted(async () => {
   try {
-    const res = await axios.get('https://portofoliobe-albar.up.railway.app/api/proyek');
+    const res = await axios.get('https://portofoliob-responsi.vercel.app/api/proyek');
     proyekList.value = res.data;
   } catch (err) {
     console.error('Gagal ambil data proyek:', err);
