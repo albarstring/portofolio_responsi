@@ -6,7 +6,7 @@ import Pendidikan from './components/Pendidikan.vue'
 import Skill from './components/Skill.vue'
 import Pengalaman from './components/Pengalaman.vue'
 import Proyek from './components/Proyek.vue'
-import Kontak from './components/Kontak.vue'
+import Kontak from './components/Footer.vue'
 
 // Data untuk Hero component
 const currentTitle = ref('Full Stack Developer')
