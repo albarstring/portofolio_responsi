@@ -10,13 +10,13 @@
         <div
           v-for="(project, index) in projects"
           :key="project.title"
-          class="group relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-105 animate-fade-in-up shadow-lg"
+          class="group relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-105 animate-fade-in-up shadow-lg w-full"
           :class="[
             projectsVisible ? 'animate-fade-in-up' : '',
-            // Light mode: card transparan, tanpa border, nyatu dengan bg
+            // Light mode: transparan, tanpa border, nyatu dengan bg
             'bg-white/0 border-0',
-            // Dark mode: card tetap ada efek gelap dan border
-            'dark:bg-white/5 dark:border dark:border-white/10'
+            // Dark mode: tetap transparan, tanpa border, biar width sama
+            'dark:bg-white/5 dark:border-0'
           ]"
           :style="{ animationDelay: (index * 0.1) + 's' }"
         >
