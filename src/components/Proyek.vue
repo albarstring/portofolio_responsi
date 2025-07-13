@@ -1,32 +1,36 @@
 <template>
   <!-- Projects Section -->
-  <section id="proyek"  class="py-36 px-6 relative"
-    style="margin-top: -6rem; z-index: 1;">
+  <section id="proyek" class="py-36 px-6 relative" style="margin-top: -6rem; z-index: 1;">
     <div class="container mx-auto max-w-6xl">
-      <h2
-        class="text-4xl md:text-6xl font-bold text-center mb-16 animate-fade-in-up"
-        :class="{ 'animate-fade-in-up': projectsVisible }"
-        ref="projectsSection"
-      >
+      <h2 class="text-4xl md:text-6xl font-bold text-center mb-16 animate-fade-in-up"
+        :class="{ 'animate-fade-in-up': projectsVisible }" ref="projectsSection">
         <span class="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Proyek</span>
       </h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
           v-for="(project, index) in projects"
           :key="project.title"
-          class="group relative overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 transition-all duration-300 hover:scale-105 animate-fade-in-up"
-          :class="{ 'animate-fade-in-up': projectsVisible }"
+          class="group relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-105 animate-fade-in-up shadow-lg"
+          :class="[
+            projectsVisible ? 'animate-fade-in-up' : '',
+            // Light mode: card transparan, tanpa border, nyatu dengan bg
+            'bg-white/0 border-0',
+            // Dark mode: card tetap ada efek gelap dan border
+            'dark:bg-white/5 dark:border dark:border-white/10'
+          ]"
           :style="{ animationDelay: (index * 0.1) + 's' }"
         >
           <!-- Project Image/Icon -->
           <div class="aspect-video bg-gradient-to-br from-purple-500/20 to-blue-500/20 relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            <div class="absolute inset-0 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-300">
+            <div
+              class="absolute inset-0 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-300">
               <template v-if="project.icon">
                 {{ project.icon }}
               </template>
               <template v-else-if="project.image">
-                <img :src="project.image" :alt="project.title" class="h-full w-full object-contain" />
+                <img :src="project.image" :alt="project.title" class="h-full w-full object-contain"
+                  @error="$event.target.style.display = 'none'" />
               </template>
               <template v-else>
                 <span class="text-gray-400">No Image</span>
@@ -38,34 +42,28 @@
           </div>
           <!-- Project Info -->
           <div class="p-6">
-            <h3 class="text-xl font-bold mb-2 text-white">{{ project.title }}</h3>
-            <p class="text-gray-400 text-sm mb-4">{{ project.description }}</p>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">{{ project.title }}</h3>
+            <p class="text-gray-700 dark:text-gray-400 text-sm mb-4">{{ project.description }}</p>
             <!-- Technologies -->
             <div class="flex flex-wrap gap-2 mb-4">
-              <span
-                v-for="tech in project.technologies"
-                :key="tech"
-                class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs"
-              >
+              <span v-for="tech in project.technologies" :key="tech"
+                class="px-2 py-1 rounded text-xs font-semibold"
+                :class="[
+                  'bg-purple-100/80 dark:bg-purple-500/20',
+                  'text-purple-700 dark:text-purple-300',
+                  'border border-purple-300/60 dark:border-purple-500/40'
+                ]">
                 {{ tech }}
               </span>
             </div>
             <!-- Action Buttons -->
             <div class="flex space-x-3">
-              <a
-                v-if="project.link"
-                :href="project.link"
-                target="_blank"
-                class="flex-1 bg-gradient-to-r from-purple-500 to-blue-500 py-2 px-4 rounded-lg text-sm font-semibold hover:scale-105 transition-transform duration-300 text-center"
-              >
+              <a v-if="project.link" :href="project.link" target="_blank"
+                class="flex-1 bg-gradient-to-r from-purple-500 to-blue-500 py-2 px-4 rounded-lg text-sm font-semibold hover:scale-105 transition-transform duration-300 text-center text-white shadow-md">
                 Live Demo
               </a>
-              <a
-                v-if="project.source"
-                :href="project.source"
-                target="_blank"
-                class="flex-1 border border-purple-400/50 py-2 px-4 rounded-lg text-sm font-semibold hover:bg-purple-400/10 transition-all duration-300 text-center"
-              >
+              <a v-if="project.source" :href="project.source" target="_blank"
+                class="flex-1 border border-purple-500 bg-white/80 dark:bg-white/5 py-2 px-4 rounded-lg text-sm font-semibold hover:bg-purple-100 dark:hover:bg-purple-400/10 transition-all duration-300 text-center text-purple-700 dark:text-white hover:text-purple-900 hover:border-purple-600">
                 Source Code
               </a>
             </div>

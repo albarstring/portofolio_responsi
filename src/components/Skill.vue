@@ -10,51 +10,48 @@
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div v-for="(group, category) in groupedSkills" :key="category"
-          class="bg-white/5 border border-white/10 rounded-xl p-6 shadow backdrop-blur-sm">
-          <h3 class="text-2xl font-bold text-white mb-6 text-center">
+          class="bg-white/60 dark:bg-white/5 border border-white/20 dark:border-white/10 rounded-xl p-6 shadow backdrop-blur-md transition hover:scale-105">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
             {{ categoryMap[category] }}
           </h3>
 
           <div v-for="skill in group" :key="skill.id" class="mb-4">
-            <div class="flex items-center justify-between mb-1 text-white text-sm">
+            <div class="flex items-center justify-between mb-1 text-gray-800 dark:text-white text-sm">
               <div class="flex gap-2 items-center">
-                <i :class="['text-xl', skill.icon]"></i>
+                <i :class="['text-xl', skill.icon]" :title="skill.name" aria-hidden="true"></i>
                 <span>{{ skill.name }}</span>
               </div>
-              <span class="text-blue-400">{{ skill.level_num }}%</span>
+              <span class="text-blue-500 dark:text-blue-400">{{ skill.level_num }}%</span>
             </div>
-            <div class="w-full bg-gray-700 rounded-full h-2">
+            <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2">
               <div
                 class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-1000 ease-out"
-                :style="{ width: skill.level_num + '%' }"></div>
+                :style="{ width: skill.level_num + '%' }">
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Lebar marquee disamakan dengan container utama -->
-    <div class="w-full max-w-6xl mx-auto mt-16 overflow-hidden select-none relative">
-      <div
-        ref="marquee"
-        class="flex gap-8 py-2 px- pointer-events-auto"
-        style="will-change: transform;"
-        @mouseenter="isMarqueePaused = true"
-        @mouseleave="isMarqueePaused = false"
-      >
-        <!-- Render icon boxicon -->
-        <template v-for="icon in boxicons" :key="icon.name">
-          <div class="h-40 w-40 flex items-center justify-center">
-            <i :class="['text-[7rem]', icon.class]"></i>
+        
+        <!-- Lebar marquee disamakan dengan container utama -->
+        <div class="w-full max-w-6xl mx-auto mt-16 overflow-hidden select-none relative">
+          <div ref="marquee" class="flex gap-8 py-2 px- pointer-events-auto" style="will-change: transform;"
+            @mouseenter="isMarqueePaused = true" @mouseleave="isMarqueePaused = false">
+            <!-- Render icon boxicon -->
+            <template v-for="icon in boxicons" :key="icon.name">
+              <div class="h-40 w-40 flex items-center justify-center">
+                <i :class="['text-[7rem]', icon.class]"></i>
+              </div>
+            </template>
+            <!-- duplikasi konten untuk efek infinite -->
+            <template v-for="icon in boxicons" :key="'dupe-' + icon.name">
+              <div class="h-40 w-40 flex items-center justify-center">
+                <i :class="['text-[7rem]', icon.class]"></i>
+              </div>
+            </template>
           </div>
-        </template>
-        <!-- duplikasi konten untuk efek infinite -->
-        <template v-for="icon in boxicons" :key="'dupe-' + icon.name">
-          <div class="h-40 w-40 flex items-center justify-center">
-            <i :class="['text-[7rem]', icon.class]"></i>
-          </div>
-        </template>
-      </div>
-    </div>
+        </div>
   </section>
 </template>
 
