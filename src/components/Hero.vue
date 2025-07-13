@@ -82,7 +82,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import albar2 from '../assets/Albar.jpg'
+import albar2 from '../assets/albarnew.jpg'
 const profileImage = ref(albar2)
 
 const boxSocialLinks = [
